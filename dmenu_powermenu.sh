@@ -2,11 +2,11 @@
 
 
 case "$(echo -e "Shutdown\nRestart\nLogout\nSuspend\nHibernate\nLock" | dmenu \
-    -fn 'Iosevka-16' \
-    -nb "#111111" \
-    -nf "#bbbbbb" \
-    -sb "#bbbbbb" \
-    -sf "#111111" \
+    -fn 'CozetteVector-16' \
+    -nb "#FFFDF7" \
+    -nf "#222222" \
+    -sb "#222222" \
+    -sf "#FFFDF7" \
     -i -p \
     "パワー:")" in
         Shutdown) exec systemctl poweroff;;

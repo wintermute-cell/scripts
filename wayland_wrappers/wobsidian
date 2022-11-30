@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+## launching obsidian with wayland compatibility
+# see (https://github.com/electron/electron/pull/26022)
+obsidian --enable-features=UseOzonePlatform --ozone-platform=wayland
