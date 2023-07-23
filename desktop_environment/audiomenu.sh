@@ -4,6 +4,7 @@ CUSTOM_NAMES=(
     "usb-Lenovo_ThinkPad_Thunderbolt_3_Dock_USB_Audio_000000000000-00/Lenovo\ Dock"
     "pci-0000_00_1f.3/Internal\ Audio"
     "usb-Focusrite_Scarlett_Solo_USB-00/Focusrite\ Scarlett"
+    "bluez_sink.F8_4E_17_A0_FF_49.a2dp_sink/Bluetooth\ Headphones"
     )
 
 function run() {
@@ -19,7 +20,7 @@ function run() {
         names_applied=$(echo "$names_applied" | sed -r "s/$rename/g")
     done
     sink_num=$(printf "$names_applied\n" |\
-        wrofi -dmenu -p "Audio Output:" -no-custom -i |\
+        fuzzel --dmenu -l 8 -p "Audio Output: " |\
         awk '{ print $1 }')
 
     if [[ $sink_num != "" ]]; then

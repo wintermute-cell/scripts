@@ -9,7 +9,10 @@ ACTIONS["4 To TTY"]="killall sway"
 
 function run() {
     action_key=$(for key in "${!ACTIONS[@]}"; do echo "${key}"; done |\
-        wrofi  -no-levenshtein-sort -dmenu -p "パワー:" -no-custom -i)
+        fuzzel --dmenu -l 5 -p "パワー: ")
+    if [[ -z "${action_key}" ]]; then
+        exit 0
+    fi
     ${ACTIONS[$action_key]}
 }
 
