@@ -3,6 +3,7 @@
 CUSTOM_NAMES=(
     "usb-Lenovo_ThinkPad_Thunderbolt_3_Dock_USB_Audio_000000000000-00/Lenovo\ Dock"
     "pci-0000_00_1f.3/Internal\ Audio"
+    "usb-Focusrite_Scarlett_Solo_USB-00.HiFi__hw_USB_1__sink/Focusrite\ Scarlett"
     "usb-Focusrite_Scarlett_Solo_USB-00/Focusrite\ Scarlett"
     "bluez_sink.F8_4E_17_A0_FF_49.a2dp_sink/Bluetooth\ Headphones"
     )

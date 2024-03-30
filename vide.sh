@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-tmux split-window -v -l 30%
-tmux split-window -h -l 66%
-tmux split-window -h -l 50%
+tmux split-window -h -l 30%
+tmux split-window -v -l 66%
+tmux split-window -v -l 50%
 
 if [[ "$1" = "venv" ]]; then
 	for i in {0..2}; do
