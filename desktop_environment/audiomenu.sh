@@ -9,24 +9,31 @@ CUSTOM_NAMES=(
     )
 
 function run() {
+    # List all sinks and extract the sink index and the name
     sinks=$(pactl list short sinks | awk '{ print $1, $2 }')
+    # Get the default sink name
     def_sink=$(pactl info | sed -En 's/Default Sink: (.*)/\1/p')
-    sinks=$(printf "$sinks" | sed -r "s/^(.*?$def_sink.*?)$/\1 ✔/g" )
-    
+    # Mark the current default sink with a checkmark
+    sinks=$(printf "$sinks" | sed -r "s/^(.*?$def_sink.*?)$/\1 ✔/g")
 
+    # Simplify the sink names removing common prefixes and suffixes
     sinks=$(printf "$sinks\n" | sed -r 's/alsa_output\.//g' | sed -r 's/\.analog-stereo//g')
     names_applied=$sinks
-    for ((i = 0; i < ${#CUSTOM_NAMES[@]}; i++)); do # loop over replacements
+    # Apply custom names for better readability
+    for ((i = 0; i < ${#CUSTOM_NAMES[@]}; i++)); do
         rename=${CUSTOM_NAMES[$i]}
         names_applied=$(echo "$names_applied" | sed -r "s/$rename/g")
     done
+    # Use fuzzel or similar tool to let user select new default sink
     sink_num=$(printf "$names_applied\n" |\
         fuzzel --dmenu -l 8 -p "Audio Output: " |\
         awk '{ print $1 }')
 
+    # Set the new default sink using pactl
     if [[ $sink_num != "" ]]; then
-        pacmd set-default-sink $sink_num
+        pactl set-default-sink $sink_num
     fi
 }
 
-run
+run # Calling the function to execute
+
