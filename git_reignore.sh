@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 
 read -p 'Apply new .gitignore? [Y/n] ' reply
 if [[ $reply =~ ^[Nn]$ ]]
