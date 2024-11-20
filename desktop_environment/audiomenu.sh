@@ -26,7 +26,8 @@ function run() {
     done
     # Use fuzzel or similar tool to let user select new default sink
     sink_num=$(printf "$names_applied\n" |\
-        fuzzel --dmenu -l 8 -p "Audio Output: " |\
+        # fuzzel --dmenu -l 8 -p "Audio Output: " |\
+        bemenu -i -l 12 --scrollbar autohide --center -W 0.16 -p "Audio Output: " |\
         awk '{ print $1 }')
 
     # Set the new default sink using pactl
